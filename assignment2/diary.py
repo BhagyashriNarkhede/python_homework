@@ -9,7 +9,7 @@ try:
                 entry = input("What happened today?")
                 first_prompt = False
             else:
-                entry = input("what else?")
+                entry = input("What else?")
             diary_file.write(entry + "\n")
             if entry == "done for now":
                 break

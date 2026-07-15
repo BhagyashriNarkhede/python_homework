@@ -176,38 +176,33 @@ def write_sorted_list():
     return converted_list
 
 employees = read_employees()
+print(employees)
 
 employee_id_column = column_index("employee_id")
 
-minutes1, minutes2 = read_minutes()
-
-minutes_set = create_minutes_set()
-
-minutes_list = create_minutes_list()
-
-print(minutes1)
-print(minutes2)
-print(minutes_set)
-print(minutes_list)
+sort_by_last_name()
+print(employees)
 
 set_that_secret("my new secret")
 print(custom_module.secret)
 
-sort_by_last_name()
+minutes1, minutes2 = read_minutes()
+print(minutes1)
+print(minutes2)
 
-print(employees)
+minutes_set = create_minutes_set()
+print(minutes_set)
 
-employee_id_column = column_index("employee_id")
+minutes_list = create_minutes_list()
+print(minutes_list)
 
-
-print(employee_id_column)
-print(employees)
-print(employee_dict(employees["rows"][0]))
-print(all_employees_dict())
 
 minutes_sorted = write_sorted_list()
-
 print(minutes_sorted)
+
+#print(employee_id_column)
+#print(employee_dict(employees["rows"][0]))
+#print(all_employees_dict())
 
 
 
