@@ -95,7 +95,7 @@ def all_employees_dict():
 
 #task 10:
 def get_this_value():
-    return os.getenv("THISVALUE")
+    return os.getenv("THISVALUE",)
 
 #Task 11
 def set_that_secret(new_secret):
@@ -128,10 +128,9 @@ def read_minutes():
     minutes2 = read_minutes_file("../csv/minutes2.csv")
 
     return minutes1, minutes2
-#minutes1, minutes2 = read_minutes()
-#print(minutes1)
-#print(minutes2)
-
+minutes1, minutes2 = read_minutes()
+print(minutes1)
+print(minutes2) 
 
 #task 13:
 def create_minutes_set():
@@ -144,26 +143,23 @@ def create_minutes_set():
 def create_minutes_list():
     minutes_list = list(minutes_set)
     minutes_list = list(
-
-
         map(
             lambda x: (x[0], datetime.strptime(x[1], "%B %d, %Y")),minutes_list
         )
     )
     return minutes_list
 
-#task 15
 
 # Task 15
 
 def write_sorted_list():
-    minutes_list.sort(key=lambda x: x[1])
+    minutes_list.sort(key=lambda row: row[1])
 
     converted_list = list(
         map(
-            lambda x: (x[0], datetime.strftime(x[1], "%B %d, %Y")),
+            lambda row: (row[0], datetime.strftime(row[1], "%B %d, %Y")),
             minutes_list
-        )
+        ),
     )
 
     with open("./minutes.csv", "w", newline="") as file:
@@ -174,7 +170,6 @@ def write_sorted_list():
         writer.writerows(converted_list)
 
     return converted_list
-
 employees = read_employees()
 print(employees)
 
@@ -186,9 +181,9 @@ print(employees)
 set_that_secret("my new secret")
 print(custom_module.secret)
 
-minutes1, minutes2 = read_minutes()
-print(minutes1)
-print(minutes2)
+#minutes1, minutes2 = read_minutes()
+#print(minutes1)
+#print(minutes2)
 
 minutes_set = create_minutes_set()
 print(minutes_set)
