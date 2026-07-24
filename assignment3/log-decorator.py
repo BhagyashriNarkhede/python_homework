@@ -14,7 +14,7 @@ def logger_decorator(func):
         if args:
             logger.info(f"positional parameters: {list(args)}")
         else:
-            logger.info("positinal parameters: none")
+            logger.info("positional parameters: none")
         if kwargs:
             logger.info(f"keyword parameters: {kwargs}")
         else:

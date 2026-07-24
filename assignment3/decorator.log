@@ -63,3 +63,15 @@ function: keyword_function
 positinal parameters: none
 keyword parameters: {'name': 'Bhagyashri', 'course': 'Python', 'assignment': 3}
 return: <function logger_decorator at 0x0000025B10CF3740>
+function: hello
+positional parameters: none
+keyword parameters: none
+return: None
+function: position_function
+positional parameters: [10, 20, 30, 'Python']
+keyword parameters: none
+return: True
+function: keyword_function
+positional parameters: none
+keyword parameters: {'name': 'Bhagyashri', 'course': 'Python', 'assignment': 3}
+return: <function logger_decorator at 0x0000025AAA243740>

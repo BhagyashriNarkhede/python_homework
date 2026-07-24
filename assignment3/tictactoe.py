@@ -1,6 +1,5 @@
 # task 6:
 
-
 class TictactoeException(Exception):
     def __init__(self, message):
         self.message = message
@@ -72,43 +71,55 @@ class Board:
             self.turn = "X"
 
     def whats_next(self):
-        for row in range(3):
-            if self.board_array[row][0] != " ":
-                if (
-                    self.board_array[row][0] ==
-                    self.board_array[row][1] ==
-                    self.board_array[row][2]
-                ):
-                    return (True, self.board_array[row][0] + " has won")
+        cat = True
+        for i in range(3):
+            for j in range(3):
+                if self.board_array[i][j] == " ":
+                    cat = False
+                else:
+                    continue
+                break
+            else:
+                continue
+            break
 
-        for col in range(3):
-            if self.board_array[0][col] != " ":
-                if (
-                    self.board_array[0][col] ==
-                    self.board_array[1][col] ==
-                    self.board_array[2][col]
-                ):
-                    return (True, self.board_array[0][col] + " has won")
+        if cat:
+            return (True, "Cat's Game.")
 
-        if self.board_array[1][1] != " ":
+        win = False
 
-            if (
-                self.board_array[0][0] ==
-                self.board_array[1][1] ==
-                self.board_array[2][2]
-            ):
-                return (True, self.board_array[1][1] + " has won")
+        for i in range(3):  # check rows
+            if self.board_array[i][0] != " ":
+                if self.board_array[i][0] == self.board_array[i][1] and self.board_array[i][1] == self.board_array[i][2]:
+                    win = True
+                    break
 
-            if (
-                self.board_array[0][2] ==
-                self.board_array[1][1] ==
-                self.board_array[2][0]
-            ):
-                return (True, self.board_array[1][1] + " has won")
-        for row in self.board_array:
-            if " " in row:
-                return (False, self.turn + "'s turn")
-        return (True, "Cat's Game")
+        if not win:
+            for i in range(3):  # check columns
+                if self.board_array[0][i] != " ":
+                    if self.board_array[0][i] == self.board_array[1][i] and self.board_array[1][i] == self.board_array[2][i]:
+                        win = True
+                        break
+
+        if not win:
+            if self.board_array[1][1] != " ":  # check diagonals
+                if self.board_array[0][0] == self.board_array[1][1] and self.board_array[2][2] == self.board_array[1][1]:
+                    win = True
+                if self.board_array[0][2] == self.board_array[1][1] and self.board_array[2][0] == self.board_array[1][1]:
+                    win = True
+
+        if not win:
+            if self.turn == "X":
+                return (False, "X's turn.")
+            else:
+                return (False, "O's turn.")
+        else:
+            if self.turn == "O":
+                return (True, "X wins!")
+            else:
+                return (True, "O wins!")
+
+
 board = Board()
 
 print("Welcome to Tic Tac Toe!")
