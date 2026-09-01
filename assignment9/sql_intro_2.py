@@ -41,6 +41,8 @@ df = df.groupby("product_id").agg(
     }
 )
 
+df = df.reset_index()
+
 print("\nFirst 5 rows after grouping:")
 print(df.head())
 
@@ -53,7 +55,7 @@ print(df.head())
 
 
 # Step 7: Write the DataFrame to CSV
-df.to_csv("order_summary.csv")
+df.to_csv("order_summary.csv", index=False)
 
 print("\norder_summary.csv created successfully!")
 

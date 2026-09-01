@@ -9,9 +9,17 @@ def add_publisher(conn, name):
             "INSERT OR IGNORE INTO publishers (name) VALUES (?)",
             (name,)
         )
+
+        cursor = conn.execute(
+            "SELECT id FROM publishers WHERE name = ?",
+            (name,)
+        )
+
+        return cursor.fetchone()[0]
+
     except sqlite3.Error as error:
         print("Error adding publisher:", error)
-
+        return None
 
 # Function to add a magazine
 def add_magazine(conn, name, publisher_id):
@@ -127,14 +135,15 @@ try:
             expiration_date TEXT NOT NULL,
             FOREIGN KEY (subscriber_id) REFERENCES subscribers(id),
             FOREIGN KEY (magazine_id) REFERENCES magazines(id)
+            UNIQUE (subscriber_id,magazine_id)
         )
         """
     )
 
     # Add publishers
-    add_publisher(conn, "Penguin Random House")
-    add_publisher(conn, "Condé Nast")
-    add_publisher(conn, "Hearst")
+    publisher1 = add_publisher(conn, "Penguin Random House")
+    publisher2 = add_publisher(conn, "Condé Nast")
+    publisher3 = add_publisher(conn, "Hearst")
 
     # Add magazines
     add_magazine(conn, "The New Yorker", 2)
