@@ -1,0 +1,7 @@
+Task 6: Challenges
+
+One challenge I faced was finding the correct HTML elements and XPath for the OWASP Top 10 vulnerabilities. At first, I was not sure which element contained the vulnerability links, so I used Chrome Developer Tools to inspect the page and copied the XPath for the first vulnerability.
+
+Another challenge was making sure Selenium could find all 10 vulnerabilities. I tested the XPath with Selenium and confirmed that it returned 10 elements. I then used a loop to get the title and href for each vulnerability and stored them in a list of dictionaries.
+
+I also had an issue with Selenium not being installed in my virtual environment. I resolved this by installing Selenium, webdriver-manager, and pandas in the active .venv environment.
